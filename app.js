@@ -58,6 +58,7 @@ app.post("/postdata", function (clientReq, clientRes) {
 
 });
 
+///all getdata
 
 app.get("/allData", function (clientReq, clientRes) {
 
@@ -80,6 +81,8 @@ app.get("/allData", function (clientReq, clientRes) {
     });
 
 });
+
+
 
 console.log("starting");
 app.listen(8080, function () {
