@@ -58,7 +58,7 @@ app.post("/postdata", function (clientReq, clientRes) {
 
 });
 
-///all getdata
+///get alldata shows through database
 
 app.get("/allData", function (clientReq, clientRes) {
 
