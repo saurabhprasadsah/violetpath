@@ -1,20 +1,18 @@
 var rest = require('restler');
 var express = require("express");
 const path = require('path');
-
 var app = express();
+
 app.use(express.json());
+
 app.get('/index', function (req, res) {
     res.sendFile(path.join(__dirname, '/index.html'));
 });
+
 app.post('/index', function (req, res) {
     res.sendFile(path.join(__dirname, '/index.html'));
 });
-
-
-
 app.get("/getData", function (clientReq, clientRes) {
-
     var id = clientReq.query.docId;
     rest.get('http://localhost:5984/mycompany/' + id, {
         "username": "saurabh",
@@ -30,16 +28,13 @@ app.get("/getData", function (clientReq, clientRes) {
             clientRes.write(JSON.stringify(result));
             clientRes.end();
         }
-
-
     });
-
 });
+
 
 app.post("/postdata", function (clientReq, clientRes) {
     //console.log("hiii")
     console.log(clientReq.body),
-
         rest.put('http://localhost:5984/mycompany/' + clientReq.body._id, {
             "username": "saurabh",
             "password": "rajukumar@123",
@@ -53,13 +48,9 @@ app.post("/postdata", function (clientReq, clientRes) {
                 clientRes.write(JSON.stringify(data));
                 clientRes.end();
             });
-
-
-
 });
 
 ///get alldata shows through database
-
 app.get("/allData", function (clientReq, clientRes) {
 
     rest.get('http://localhost:5984/mycompany/_all_docs',  {
@@ -76,18 +67,13 @@ app.get("/allData", function (clientReq, clientRes) {
             clientRes.write(JSON.stringify(result));
             clientRes.end();
         }
-
-
     });
 
 });
-
-
 
 console.log("starting");
 app.listen(8080, function () {
     console.log("Server started");
 });
-
 console.log("hiii);
 
